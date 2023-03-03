@@ -31,9 +31,7 @@ class App{
         document.querySelector("#date-date").innerHTML = `${this.values.birth.replace(/-/g, ".")}<br>${this.values.death.replace(/-/g, ".")}`;
         document.querySelector("#profile-remaindate").innerHTML = `${diffNowDeath.years()}년 ${diffNowDeath.months()}개월 ${diffNowDeath.days()}일 남았습니다.`
         document.querySelector("#dday-num").innerHTML = `D-${Math.floor(diffNowDeath.asDays())}`
-        document.querySelector("icon-text").innerHTML = `${yearToClass(birth.year())}`
-        
-        birth.year()
+        document.querySelector("#icon-text").innerHTML = `${this.yearToClass(birth.year())}`
         document.querySelector("#ageclass-name").innerHTML = `${diffBirthNow.years()}세`
 
     }
