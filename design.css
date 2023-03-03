@@ -25,7 +25,6 @@ input {
   }
 .row{
     display : flex;
-    margin : 0px 15px;
     justify-content: space-between;
     align-items: center;
     border-bottom: solid #655c5d 1px;
@@ -42,7 +41,7 @@ input {
     color : #ffffff
 }
 #start{
-    margin : 50px 15px;
+    margin : 50px 0px;
     height : 40px;
     background-color : #90c8b1;
     font-size : 14px;
@@ -52,7 +51,7 @@ input {
     align-items : center;
 }
 .wrapper{
-    width : 100%;
+    padding: 20px;
     
 }
 #main-body{
@@ -171,35 +170,29 @@ input {
     
 }
 
-#range-header{
+.range-header{
     
     display : flex;
     justify-content: space-between;
     color : #ffffff;
     font-size : 15px;
 }
-#range-left{
+.range-left{
     font-weight: bold;
 }
-/* #range-bar{
-    height : 18px;
-    width : 100%;
-    border-radius : 0px;
-} */
-#range-bar {
+.range-bar {
     width : 100%;
     appearance: none;
 }
-#range-bar::-webkit-progress-bar {
+.range-bar::-webkit-progress-bar {
     height : 15px;
     
     background:#7e7778;
     border-radius:0px;
 }
-#range-bar::-webkit-progress-value {
+.range-bar::-webkit-progress-value {
     border-radius:0px;
     background: #90c8b1;
-
 }
 #range-info{
     font-size:13px;
@@ -209,6 +202,47 @@ input {
 }
 
 #subrange{
+    
     background-color: #463d3f;
     height : 100px;
+    color : #ffffff;
+    display : flex;
+    justify-content: space-around;
+}
+.subrange-content{
+    width : 50%;
+    padding : 10px 20px;
+    
+}
+
+#age-date{
+    text-align: right;
+    font-size : 11px;
+    
+}
+
+.subrange-bar::-webkit-progress-bar {
+    height : 7px;
+    
+    background:#746e6f;
+}
+.subrange-bar::-webkit-progress-value {
+    background: #fbf4de;
+}
+
+#info2{
+    padding : 20px;
+}
+
+.main-row{
+    display : flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid #e9e9e9 1px;
+    padding : 5px 0px
+}
+
+.main-left{
+    font-size : 15px;
+    font-weight : bold;
 }
