@@ -8,6 +8,9 @@ body{
 
 
 }
+path{
+    fill : #90c8b1;
+}
 
 #start-modal{
     position : absolute;
@@ -38,7 +41,7 @@ input {
     border: none;
     color : #ffffff
 }
-.start{
+#start{
     margin : 50px 15px;
     height : 40px;
     background-color : #90c8b1;
@@ -51,4 +54,156 @@ input {
 .wrapper{
     width : 100%;
     
+}
+#main-body{
+    background-color: #f9f9f9;
+    position : absolute;
+    width : 100%;
+    height : 100%;
+
+}
+#profile{
+    display : flex;
+    width : 80%;
+    margin : 20px;
+    justify-content: space-between;
+    
+}
+
+#profile-image{
+    width : 100px;
+    height : 100px;
+    background-image: url(src/profile_image.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+#profile-name{
+    font-size : 20px;
+    margin-top : 10px;
+}
+#profile-date{
+    display : flex;
+    margin-top : 10px;
+    font-size : 11px;
+    line-height: 15px;
+
+
+}
+#date-key{
+    margin-right : 10px;
+    padding-right : 10px;
+    border-right: solid 1px #e9e9e9;
+}
+#date-date{
+    font-size : 13px;
+}
+#profile-remaindate{
+    margin-top : 5px;
+    font-size : 7px;
+    width : inherit;
+    text-align : center;
+}
+#info1{
+    margin : auto;
+    margin-top : 20px;
+    height : 40px;
+    width : 90%;
+    border-radius: 5px 5px 0px 0px;
+    background-color: #463d3f;
+    display : flex;
+    justify-content: space-around;
+}
+#dday{
+    display : flex;
+}
+#dday-icon{
+    margin-right : 15px;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+}
+#dday-num{
+    font-size : 15px;
+    color : #ffffff;
+    display : flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+#ageclass{
+    display : flex;
+}
+
+#ageclass-icon{
+    margin-right : 15px;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+#icon-box{
+    width : 20px;
+    height : 18px;
+    background-color : #fffae3;
+    border-radius : 3px;
+    color : #463d3f;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+    font-size : 12px;
+
+}
+#ageclass-name{
+    font-size : 15px;
+    color : #ffffff;
+    display : flex;
+    align-items: center;
+    font-weight: bold;
+}
+#range{
+    
+    height : 50px;
+    padding : 20px 20px 30px 20px;
+    background-color: #53494b;
+    
+}
+
+#range-header{
+    
+    display : flex;
+    justify-content: space-between;
+    color : #ffffff;
+    font-size : 15px;
+}
+#range-left{
+    font-weight: bold;
+}
+/* #range-bar{
+    height : 18px;
+    width : 100%;
+    border-radius : 0px;
+} */
+#range-bar {
+    width : 100%;
+    appearance: none;
+}
+#range-bar::-webkit-progress-bar {
+    height : 15px;
+    
+    background:#7e7778;
+    border-radius:0px;
+}
+#range-bar::-webkit-progress-value {
+    border-radius:0px;
+    background: #90c8b1;
+
+}
+#range-info{
+    font-size:13px;
+    color : #90c8b1;
+    position : absolute;
+    transform: translate(100%, -2px);
 }
