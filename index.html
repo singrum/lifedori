@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="design.css">
     <script src="js/main.js" type="module" defer></script>
     <title>사망일 계산기</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 </head>
 <body oncontextmenu='return false' onselectstart='return false' ondragstart='return false'>
-    <div id = "start-modal" style = "display : none">
+
+    <div id = "start-modal" style = "display : block">
         <div class = "wrapper">
             <div class = "row" style = "margin-top : 40px;">
                 <span class = "left">이름</span>
@@ -30,7 +32,7 @@
         </div>
     
     </div>
-    <div id = "main-body" style = "display : block">
+    <div id = "main-body" style = "display : none">
 
 
         <div id = "head">
@@ -46,7 +48,7 @@
         <div id ="profile">
             <span id = "profile-image"></span>
             <span id = "profile-info">
-                <div id = "profile-name">청년 <b>강효민</b></div>
+                <div id = "profile-name">청년&nbsp<b>강효민</b></div>
                 <div id = "profile-date">
                     <span id = "date-key">
                         출생<br>사망
