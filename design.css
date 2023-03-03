@@ -207,3 +207,8 @@ input {
     position : absolute;
     transform: translate(100%, -2px);
 }
+
+#subrange{
+    background-color: #463d3f;
+    height : 100px;
+}
