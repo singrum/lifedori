@@ -36,7 +36,7 @@ class App{
             this.subrangeClassBar = document.querySelector("#subrange-class-bar");
             this.classRangeInfo = document.querySelector("#class-range-info");
             this.details = document.querySelectorAll("details");
-            // requestAnimationFrame(this.render.bind(this));
+            requestAnimationFrame(this.render.bind(this));
             this._setValues();
         })
     }
@@ -69,7 +69,7 @@ class App{
         
         
         this.totalRangeInfo.innerHTML = `${this.getFloatFixed(this.totalRange.value / this.totalRange.max, 11)}%`
-        this.totalRangeInfo.style.transform = `translate(calc((100% - 95px) * ${this.totalRange.value / this.totalRange.max}), -2px)`
+        this.totalRangeInfo.style.transform = `translate(calc((100% - 95px) * ${this.totalRange.value / this.totalRange.max}), 0px)`
         
 
         this.ageDate.innerHTML = `${this.birth.clone().add(age + 1, "y").format("l")}`
