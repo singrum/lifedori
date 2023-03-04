@@ -36,7 +36,7 @@ class App{
             this.subrangeClassBar = document.querySelector("#subrange-class-bar");
             this.classRangeInfo = document.querySelector("#class-range-info");
             this.details = document.querySelectorAll("details");
-            // requestAnimationFrame(this.render.bind(this));
+            requestAnimationFrame(this.render.bind(this));
             this._setValues();
         })
     }
