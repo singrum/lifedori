@@ -7,7 +7,7 @@ class App{
 
     }
     getFloatFixed(value, fixed){
-        return (Math.round(value * 1e10) / 1e8).toPrecision(fixed)
+        return (Math.round(value * 1e11) / 1e9).toPrecision(fixed)
     }
     _setupStartBtn(){
         this.startBtn.addEventListener("click", ()=>{
@@ -17,7 +17,26 @@ class App{
             this.birth = moment(this.values.birth);
             this.death = moment(this.values.death);
             this.diffBirthDeath = moment.duration(this.death.diff(this.birth));
-            requestAnimationFrame(this.render.bind(this));
+
+            this.profileName = document.querySelector("#profile-name");
+            this.dateDate = document.querySelector("#date-date");
+            this.profileRemaindate = document.querySelector("#profile-remaindate");
+            this.ddayNum = document.querySelector("#dday-num")
+            this.iconText = document.querySelector("#icon-text");
+            this.ageclassName = document.querySelector("#ageclass-name");
+            this.rangeDeath = document.querySelector("#range-death");
+            this.totalRange = document.querySelector("#range-total");
+            this.totalRangeInfo = document.querySelector("#total-range-info")
+            this.ageDate = document.querySelector("#age-date")
+            this.nextAge = document.querySelector("#next-age")
+            this.ageRange = document.querySelector("#subrange-age-bar")
+            this.ageRangeInfo = document.querySelector("#age-range-info");
+            this.nextClass = document.querySelector("#next-class")
+            this.classDate = document.querySelector("#class-date");
+            this.subrangeClassBar = document.querySelector("#subrange-class-bar");
+            this.classRangeInfo = document.querySelector("#class-range-info");
+            this.details = document.querySelectorAll("details");
+            // requestAnimationFrame(this.render.bind(this));
             this._setValues();
         })
     }
@@ -38,41 +57,36 @@ class App{
         const age = this.diffBirthNow.years()
         const ageClass = (Math.floor(age / 10)) * 10;
         
-        document.querySelector("#profile-name").innerHTML = `${this.ageToClass1(age)}&nbsp<b>${this.values.name}</b>`
-        document.querySelector("#date-date").innerHTML = `${this.birth.format("l")}<br>${this.death.format("l")}`;
-        document.querySelector("#profile-remaindate").innerHTML = `${this.diffNowDeath.years()}년 ${this.diffNowDeath.months()}개월 ${this.diffNowDeath.days()}일 남았습니다.`
-        document.querySelector("#dday-num").innerHTML = `D-${Math.floor(this.diffNowDeath.asDays())}`
-        document.querySelector("#icon-text").innerHTML = `${this.yearToClass(this.birth.year())}`
-        document.querySelector("#ageclass-name").innerHTML = `${age}세`
-        document.querySelector("#range-death").innerHTML = `${this.death.format('ll')}`
-        const totalRange = document.querySelector("#range-total");
-        [totalRange.value, totalRange.max] = [this.diffBirthNow.asMilliseconds(),this.diffBirthDeath.asMilliseconds()]
-        const totalRangeInfo = document.querySelector("#total-range-info")
-        totalRangeInfo.innerHTML = `${this.getFloatFixed(totalRange.value / totalRange.max, 10)}%`
-        totalRangeInfo.style.transform = `translate(calc((100% - 67px) * ${totalRange.value / totalRange.max}), -2px)`
+        this.profileName.innerHTML = `${this.ageToClass1(age)}&nbsp<b>${this.values.name}</b>`
+        this.dateDate.innerHTML = `${this.birth.format("l")}<br>${this.death.format("l")}`;
+        this.profileRemaindate.innerHTML = `${this.diffNowDeath.years()}년 ${this.diffNowDeath.months()}개월 ${this.diffNowDeath.days()}일 남았습니다.`
+        this.ddayNum.innerHTML = `D-${Math.floor(this.diffNowDeath.asDays())}`
+        this.iconText.innerHTML = `${this.yearToClass(this.birth.year())}`
+        this.ageclassName.innerHTML = `${age}세`
+        this.rangeDeath.innerHTML = `${this.death.format('ll')}`
+        this.totalRange.value = this.diffBirthNow.asMilliseconds();
+        this.totalRange.max = this.diffBirthDeath.asMilliseconds()
+        
+        
+        this.totalRangeInfo.innerHTML = `${this.getFloatFixed(this.totalRange.value / this.totalRange.max, 11)}%`
+        this.totalRangeInfo.style.transform = `translate(calc((100% - 95px) * ${this.totalRange.value / this.totalRange.max}), -2px)`
         
 
-        document.querySelector("#age-date").innerHTML = `${this.birth.clone().add(age + 1, "y").format("l")}`
-        document.querySelector("#next-age").innerHTML = `${age + 1}세`
-        const ageRange = document.querySelector("#subrange-age-bar");
-        ageRange.value = moment.duration(this.now.diff(this.birth.clone().add(age, "y"))).asMilliseconds();
-        ageRange.max = moment.duration(this.birth.clone().add(age + 1, "y").diff(this.birth.clone().add(age , "y"))).asMilliseconds()
-        const ageRangeInfo = document.querySelector("#age-range-info")
-        ageRangeInfo.innerHTML = `${this.getFloatFixed(ageRange.value / ageRange.max, 7)}%`
-        // ageRangeInfo.style.transform = `translate(${(window.innerWidth - 80 - 67) * ageRange.value / ageRange.max}px, -10px)`
+        this.ageDate.innerHTML = `${this.birth.clone().add(age + 1, "y").format("l")}`
+        this.nextAge.innerHTML = `${age + 1}세`
+        this.ageRange.value = moment.duration(this.now.diff(this.birth.clone().add(age, "y"))).asMilliseconds();
+        this.ageRange.max = moment.duration(this.birth.clone().add(age + 1, "y").diff(this.birth.clone().add(age , "y"))).asMilliseconds()
+        this.ageRangeInfo.innerHTML = `${this.getFloatFixed(this.ageRange.value / this.ageRange.max, 8)}%`
 
 
-        document.querySelector("#class-date").innerHTML = `${this.birth.clone().add(ageClass + 10, "y").format("l")}`
-        document.querySelector("#next-class").innerHTML = `${ageClass + 10}대`
-        const classRange = document.querySelector("#subrange-class-bar");
-        classRange.value = moment.duration(this.now.diff(this.birth.clone().add(ageClass, "y"))).asMilliseconds();
-        classRange.max = moment.duration(this.birth.clone().add(ageClass + 10, "y").diff(this.birth.clone().add(ageClass , "y"))).asMilliseconds();
-        const classInfo = document.querySelector("#class-range-info")
-        classInfo.innerHTML = `${this.getFloatFixed(classRange.value / classRange.max, 7)}%`
-        // classInfo.style.transform = `translate(calc((100% - 67px) * ${classRange.value / classRange.max}), -10px)`
+        this.classDate.innerHTML = `${this.birth.clone().add(ageClass + 10, "y").format("l")}`
+        this.nextClass.innerHTML = `${ageClass + 10}대`
+        this.subrangeClassBar.value = moment.duration(this.now.diff(this.birth.clone().add(ageClass, "y"))).asMilliseconds();
+        this.subrangeClassBar.max = moment.duration(this.birth.clone().add(ageClass + 10, "y").diff(this.birth.clone().add(ageClass , "y"))).asMilliseconds();
+        this.classRangeInfo.innerHTML = `${this.getFloatFixed(this.subrangeClassBar.value / this.subrangeClassBar.max, 8)}%`
 
         
-        document.querySelectorAll("details").forEach((d,i)=>{
+        this.details.forEach((d,i)=>{
             d.innerHTML = `
             <summary>${Math.floor(this.diffs[i].asDays())}일</summary>
             <p>${Math.floor(this.diffs[i].asWeeks())}주일<br>

@@ -23,7 +23,7 @@
                 <span class = "left">출생일</span>
                 <input type="date" id="birth" name="birth" class = "right" value = "2002-04-14" onchange="death.value = parseInt(birth.value.slice(0,4)) + 90 + birth.value.slice(4)"></input>
             </div>
-            <div class = "row">
+            <div class = "row" style = "border : 0px">
                 <span class = "left">사망일</span>
                 <input type="date" id="death" name="death" class = "right" value = "2092-04-14"></input>
             </div>
@@ -128,7 +128,7 @@
                 </details>
                 
             </div>
-            <div class = "main-row">
+            <div class = "main-row" style = "border : 0px">
                 <span class = "main-left">남은 생존 기간</span>
                 <details>
                 </details>
@@ -138,6 +138,9 @@
 
         
             
+        </div>
+        <div id = "footer">
+            * Inspired By Goondori
         </div>
     </div>
 </body>

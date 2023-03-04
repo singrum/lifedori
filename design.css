@@ -242,7 +242,7 @@ input {
 }
 
 #info2{
-    padding : 20px;
+    padding : 10px 20px;
 }
 
 .main-row{
@@ -284,4 +284,11 @@ details > p{
     margin : 0px;
     text-align : right;
     line-height : 30px;
+}
+
+#footer{
+    font-size : 6px;
+    color : #555;
+    text-align : center;
+
 }
