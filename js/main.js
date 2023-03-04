@@ -1,10 +1,13 @@
+
+
 class App{
     constructor(){
         this.startBtn = document.querySelector("#start");
         this._setupStartBtn();
+
     }
     getFloatFixed(value, fixed){
-        return (Math.round(value * 1e7) / 1e5).toPrecision(fixed)
+        return (Math.round(value * 1e10) / 1e8).toPrecision(fixed)
     }
     _setupStartBtn(){
         this.startBtn.addEventListener("click", ()=>{
@@ -12,12 +15,9 @@ class App{
             document.querySelector("#start-modal").style.display = "none";
             document.querySelector("#main-body").style.display = "block";
             this.birth = moment(this.values.birth);
-            this.now = moment();
             this.death = moment(this.values.death);
             this.diffBirthDeath = moment.duration(this.death.diff(this.birth));
-            this.diffBirthNow = moment.duration(this.now.diff(this.birth));
-            this.diffNowDeath = moment.duration(this.death.diff(this.now));
-            this.diffs = [this.diffBirthDeath, this.diffBirthNow, this.diffNowDeath]
+            requestAnimationFrame(this.render.bind(this));
             this._setValues();
         })
     }
@@ -29,7 +29,12 @@ class App{
         }
     }
     _setValues(){
-
+        
+        this.now = moment();
+        
+        this.diffBirthNow = moment.duration(this.now.diff(this.birth));
+        this.diffNowDeath = moment.duration(this.death.diff(this.now));
+        this.diffs = [this.diffBirthDeath, this.diffBirthNow, this.diffNowDeath]
         const age = this.diffBirthNow.years()
         const ageClass = (Math.floor(age / 10)) * 10;
         
@@ -43,7 +48,7 @@ class App{
         const totalRange = document.querySelector("#range-total");
         [totalRange.value, totalRange.max] = [this.diffBirthNow.asMilliseconds(),this.diffBirthDeath.asMilliseconds()]
         const totalRangeInfo = document.querySelector("#total-range-info")
-        totalRangeInfo.innerHTML = `${this.getFloatFixed(totalRange.value / totalRange.max, 7)}%`
+        totalRangeInfo.innerHTML = `${this.getFloatFixed(totalRange.value / totalRange.max, 10)}%`
         totalRangeInfo.style.transform = `translate(calc((100% - 67px) * ${totalRange.value / totalRange.max}), -2px)`
         
 
@@ -66,48 +71,30 @@ class App{
         classInfo.innerHTML = `${this.getFloatFixed(classRange.value / classRange.max, 7)}%`
         // classInfo.style.transform = `translate(calc((100% - 67px) * ${classRange.value / classRange.max}), -10px)`
 
-        const footerValues = document.querySelectorAll(".footer-number")
-        footerValues[0].innerHTML = `${Math.floor(this.diffBirthDeath.asDays())}일`
-        footerValues[1].innerHTML = `${Math.floor(this.diffBirthNow.asDays())}일`;
-        footerValues[2].innerHTML = `${Math.floor(this.diffNowDeath.asDays())}일`;
         
-        this.setEvent();
+        document.querySelectorAll("details").forEach((d,i)=>{
+            d.innerHTML = `
+            <summary>${Math.floor(this.diffs[i].asDays())}일</summary>
+            <p>${Math.floor(this.diffs[i].asWeeks())}주일<br>
+            ${Math.floor(this.diffs[i].asMonths())}개월<br>
+            ${Math.floor(this.diffs[i].asYears())}년<br>
+            ${Math.floor(this.diffs[i].asHours())}시간<br>
+            ${Math.floor(this.diffs[i].asMinutes())}분<br>
+            ${Math.floor(this.diffs[i].asSeconds())}초
+            </p>
+            `
+        })
+        
+
         
     }
-    setEvent(){
-        
-        let cnt = [0,0,0]
-        const listener = (btn, i)=>{
-            const num = 6;
-            if(cnt[i] === num) cnt[i] = 0; else cnt[i]++;
-            switch(cnt[i]){
-                case 0:
-                    btn.querySelector(".footer-number").innerHTML = `${Math.floor(this.diffs[i].asDays())}일`
-                    break;
-                case 1:
-                    btn.querySelector(".footer-number").innerHTML = `${Math.floor(this.diffs[i].asWeeks())}주일`
-                    break;
-                case 2:
-                    btn.querySelector(".footer-number").innerHTML = `${Math.floor(this.diffs[i].asMonths())}개월`
-                    break;
-                case 3:
-                    btn.querySelector(".footer-number").innerHTML = `${Math.floor(this.diffs[i].asYears())}년`
-                    break;
-                case 4:
-                    btn.querySelector(".footer-number").innerHTML = `${Math.floor(this.diffs[i].asHours())}시간`
-                    break;
-                case 5:
-                    btn.querySelector(".footer-number").innerHTML = `${Math.floor(this.diffs[i].asMinutes())}분`
-                    break;
-                case 6:
-                    btn.querySelector(".footer-number").innerHTML = `${Math.floor(this.diffs[i].asSeconds())}초`
-                    break;
-            }
-            
-        }
-        const buttons = document.querySelectorAll(".main-right");
-        buttons.forEach((btn, i) => {btn.addEventListener("click", ()=>{listener(btn, i)})})
+    render(){
+        this.update();
+		requestAnimationFrame(this.render.bind(this));
+    }
 
+    update(){
+        this._setValues()
     }
     ageToClass1(age){
         switch(parseInt(age / 10)){

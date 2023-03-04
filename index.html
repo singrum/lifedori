@@ -17,15 +17,15 @@
         <div class = "wrapper">
             <div class = "row" style = "margin-top : 40px;">
                 <span class = "left">이름</span>
-                <input type="text" id="name" name="name" class = "right" value = "강효민"></input>
+                <input type="text" id="name" name="name" class = "right" value = "홍길동"></input>
             </div>
             <div class = "row">
                 <span class = "left">출생일</span>
-                <input type="date" id="birth" name="birth" class = "right" value = "2002-04-14"></input>
+                <input type="date" id="birth" name="birth" class = "right" value = "2002-04-14" onchange="death.value = parseInt(birth.value.slice(0,4)) + 90 + birth.value.slice(4)"></input>
             </div>
             <div class = "row">
                 <span class = "left">사망일</span>
-                <input type="date" id="death" name="death" class = "right" value = "2092-06-29"></input>
+                <input type="date" id="death" name="death" class = "right" value = "2092-04-14"></input>
             </div>
             <div id = "start">
                 시작하기
@@ -50,17 +50,15 @@
         <div id ="profile">
             <span id = "profile-image"></span>
             <span id = "profile-info">
-                <div id = "profile-name">청년&nbsp<b>강효민</b></div>
+                <div id = "profile-name"></div>
                 <div id = "profile-date">
                     <span id = "date-key">
                         출생<br>사망
                     </span>
                     <span id = "date-date">
-                        2002.04.14<br>2092.06.19
                     </span>
                 </div>
                 <div id = "profile-remaindate">
-                    4개월 1일 남았습니다.
                 </div>
             </span>
         </div>
@@ -72,19 +70,16 @@
                     <svg width= 16 heigth = 16 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M368 128c0 44.4-25.4 83.5-64 106.4V256c0 17.7-14.3 32-32 32H176c-17.7 0-32-14.3-32-32V234.4c-38.6-23-64-62.1-64-106.4C80 57.3 144.5 0 224 0s144 57.3 144 128zM168 176a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm144-32a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM3.4 273.7c7.9-15.8 27.1-22.2 42.9-14.3L224 348.2l177.7-88.8c15.8-7.9 35-1.5 42.9 14.3s1.5 35-14.3 42.9L295.6 384l134.8 67.4c15.8 7.9 22.2 27.1 14.3 42.9s-27.1 22.2-42.9 14.3L224 419.8 46.3 508.6c-15.8 7.9-35 1.5-42.9-14.3s-1.5-35 14.3-42.9L152.4 384 17.7 316.6C1.9 308.7-4.5 289.5 3.4 273.7z"/></svg>
                 </span>
                 <span id = "dday-num">
-                    D-128
                 </span>
             </span>
             <span id="ageclass">
                 <span id="ageclass-icon">
                     <span id="icon-box">
                         <span id="icon-text">
-                            MZ
                         </span>
                     </span>
                 </span>
                 <span id="ageclass-name">
-                    21세
                 </span>
 
             </span>
@@ -92,63 +87,55 @@
         <div id = "range">
             <div class = "range-header">
                 <span class="range-left">사망</span>
-                <span class="range-right" id = "range-death">2092년 06월 29일</span>
+                <span class="range-right" id = "range-death"></span>
             </div>
-            <progress class="range-bar" id = "range-total" value="50" max="100"></progress>
-            <div class="range-info" id = "total-range-info">50%</div>
+            <progress class="range-bar" id = "range-total"></progress>
+            <div class="range-info" id = "total-range-info"></div>
         </div>
 
 
         <div id = "subrange">
             <span class = "subrange-content" id = "subrange-age">
-                <div class = "subrange-date" id="age-date">2023.04.01</div>
+                <div class = "subrange-date" id="age-date"></div>
                 <div class="range-header">
                     <span class="range-left">다음 나이</span>
-                    <span class="range-right" id = "next-age">22</span>
+                    <span class="range-right" id = "next-age"></span>
                 </div>
-                <progress class="subrange-bar" id = "subrange-age-bar" value="50" max="100"></progress>
-                <div class="subrange-info" id = "age-range-info">50%</div>
+                <progress class="subrange-bar" id = "subrange-age-bar"></progress>
+                <div class="subrange-info" id = "age-range-info"></div>
             </span>
             <span class = "subrange-content" id = "subrange-class">
-                <div class = "subrange-date" id="class-date">2023.07.01</div>
+                <div class = "subrange-date" id="class-date"></div>
                 <div class="range-header">
                     <span class="range-left">다음 나이대</span>
-                    <span class="range-right" id = "next-class">30</span>
+                    <span class="range-right" id = "next-class"></span>
                 </div>
-                <progress class="subrange-bar" id = "subrange-class-bar" value="50" max="100"></progress>
-                <div class="subrange-info" id = "class-range-info">50%</div>
+                <progress class="subrange-bar" id = "subrange-class-bar"></progress>
+                <div class="subrange-info" id = "class-range-info"></div>
             </span>
         </div>
 
         <div id="info2">
             <div class = "main-row">
-                <span class = "main-left">전체 생존 시간</span>
-                <span class = "main-right">
-                    <span class = "footer-number"></span>
-                    <span class = "controller">
-                        <span class="material-symbols-outlined" style = "font-size : 20px;">arrow_forward_ios</span>
-                    </span>
-                </span>
-            </div>
-            <div class = "main-row">
-                <span class = "main-left">현재 생존 시간</span>
-                <span class = "main-right">
-                    <span class = "footer-number"></span>
-                    <span class = "controller">
-                        <span class="material-symbols-outlined" style = "font-size : 20px;">arrow_forward_ios</span>
-                    </span>
-                </span>
-            </div>
-            <div class = "main-row">
-                <span class = "main-left">남은 생존 시간</span>
-                <span class = "main-right">
-                    <span class = "footer-number"></span>
-                    <span class = "controller">
-                        <span class="material-symbols-outlined" style = "font-size : 20px;">arrow_forward_ios</span>
-                    </span>
-                </span>
+                <span class = "main-left">전체 생존 기간</span>
+                <details>
+                </details>
                 
             </div>
+            <div class = "main-row">
+                <span class = "main-left">현재 생존 기간</span>
+                <details>
+                </details>
+                
+            </div>
+            <div class = "main-row">
+                <span class = "main-left">남은 생존 기간</span>
+                <details>
+                </details>
+                
+            </div>
+
+
         
             
         </div>

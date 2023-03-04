@@ -79,7 +79,7 @@ input {
 
 #profile-name{
     font-size : 20px;
-    margin-top : 10px;
+    margin-top : 5px;
 }
 #profile-date{
     display : flex;
@@ -273,5 +273,15 @@ input {
     align-items: center;
     justify-content: center;
     width : 16px;
+}
+
+details > summary{
+    text-align : right;
+    line-height: 30px;
     
+}
+details > p{
+    margin : 0px;
+    text-align : right;
+    line-height : 30px;
 }
