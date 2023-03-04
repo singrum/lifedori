@@ -168,7 +168,7 @@ input {
     padding : 20px 20px 30px 20px;
     background-color: #53494b;
     
-    overflow: none;
+    overflow: hidden;
 }
 
 .range-header{
