@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="design.css">
     <script src="js/main.js" type="module" defer></script>
     <title>사망일 계산기</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/ko.min.js"></script>
 </head>
 <body oncontextmenu='return false' onselectstart='return false' ondragstart='return false'>
 
@@ -90,29 +91,31 @@
         <div id = "range">
             <div class = "range-header">
                 <span class="range-left">사망</span>
-                <span class="range-right">2092년 06월 29일</span>
+                <span class="range-right" id = "range-death">2092년 06월 29일</span>
             </div>
             <progress class="range-bar" id = "range-total" value="50" max="100"></progress>
-            <div id="range-info">50%</div>
+            <div class="range-info" id = "total-range-info">50%</div>
         </div>
 
 
         <div id = "subrange">
             <span class = "subrange-content" id = "subrange-age">
-                <div id="age-date">2023.04.01</div>
+                <div class = "subrange-date" id="age-date">2023.04.01</div>
                 <div class="range-header">
                     <span class="range-left">다음 나이</span>
-                    <span class="range-right">22</span>
+                    <span class="range-right" id = "next-age">22</span>
                 </div>
-                <progress class="range-bar subrange-bar" id = "subrange-age" value="50" max="100"></progress>
+                <progress class="subrange-bar" id = "subrange-age-bar" value="50" max="100"></progress>
+                <div class="subrange-info" id = "age-range-info">50%</div>
             </span>
             <span class = "subrange-content" id = "subrange-class">
-                <div id="age-date">2023.07.01</div>
+                <div class = "subrange-date" id="class-date">2023.07.01</div>
                 <div class="range-header">
                     <span class="range-left">다음 나이대</span>
-                    <span class="range-right">30</span>
+                    <span class="range-right" id = "next-class">30</span>
                 </div>
-                <progress class="range-bar subrange-bar" id = "subrange-class" value="50" max="100"></progress>
+                <progress class="subrange-bar" id = "subrange-class-bar" value="50" max="100"></progress>
+                <div class="subrange-info" id = "class-range-info">50%</div>
             </span>
         </div>
 
