@@ -257,10 +257,21 @@ input {
     font-size : 15px;
     font-weight : bold;
 }
+.main-right{
+    display : flex;
+
+}
 .subrange-info{
     width : 100%;
     font-size:13px;
     color : #fbf4de;
     position : relative;
     transform: translate(0, -10px);
+}
+#controller{
+    display : flex;
+    align-items: center;
+    justify-content: center;
+    width : 16px;
+    
 }

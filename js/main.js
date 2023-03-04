@@ -67,11 +67,10 @@ class App{
         // classInfo.style.transform = `translate(calc((100% - 67px) * ${classRange.value / classRange.max}), -10px)`
 
         const footerValues = document.querySelectorAll(".main-right")
-        footerValues[0].innerHTML = diffBirthDeath.asDays()
-        footerValues[1].innerHTML = Math.floor(diffBirthNow.asDays());
-        footerValues[2].innerHTML = Math.floor(diffNowDeath.asDays());
-        footerValues[3].innerHTML = Math.floor(diffNowDeath.asWeeks());
-        footerValues[3].innerHTML = Math.floor(diffNowDeath.asMonths());
+        footerValues[0].innerHTML = `${diffBirthDeath.asDays()}일`
+        footerValues[1].innerHTML = `${Math.floor(diffBirthNow.asDays())}일`;
+        this.changer = document.querySelector("#footer-number")
+        this.changer.innerHTML = `${Math.floor(diffNowDeath.asDays())}일`
         console.log(diffNowDeath)
         
     }
